@@ -1,0 +1,516 @@
+/* Romantic Love Theme for Alfin & Eka */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;family=Great+Vibes&amp;display=swap');
+
+:root {
+  --primary-pink: #ff69b4;
+  --romantic-purple: #ba55d3;
+  --gold-heart: #ffd700;
+  --soft-white: #f8f9fa;
+  --dark-text: #2c1b3e;
+  --shadow-romantic: 0 10px 30px rgba(255,105,180,0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background: linear-gradient(135deg, #fff1f8 0%, #e8f4f8 100%);
+}
+
+h1, h2, h3 { font-family: 'Great Vibes', cursive; }
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: var(--shadow-romantic);
+  transition: all 0.3s ease;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo h1 {
+  color: var(--primary-pink);
+  font-size: 2rem;
+  position: relative;
+}
+
+.navbar-logo h1::after {
+  content: '❤️';
+  position: absolute;
+  font-size: 1.2rem;
+  top: -10px;
+  right: -30px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.navbar-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: var(--dark-text);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navbar-menu a:hover {
+  color: var(--primary-pink);
+}
+
+.navbar-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-pink);
+  transition: width 0.3s;
+}
+
+.navbar-menu a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--romantic-purple), var(--primary-pink));
+  color: white;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"hearts\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"10\" cy=\"10\" r=\"1\" fill=\"rgba(255,255,255,0.1)\"/><path d=\"M10 2 Q12 0 14 2 Q16 4 14 6 Q12 8 10 6 Q8 8 6 6 Q4 4 6 2 Q8 0 10 2\" fill=\"none\" stroke=\"rgba(255,255,255,0.2)\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23hearts)\"/></svg>');
+  animation: sparkle 20s linear infinite;
+}
+
+#hearts-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-title h2 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero-description {
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.3s forwards;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.6s forwards;
+}
+
+.cta-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--gold-heart);
+  color: var(--romantic-purple);
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-romantic);
+}
+
+/* General Sections */
+section {
+  padding: 100px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title h2 {
+  font-size: 3.5rem;
+  color: var(--romantic-purple);
+  position: relative;
+}
+
+.section-title h2::after {
+  content: '💕';
+  display: block;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* About Section */
+.about-section {
+  background: rgba(255,248,255,0.7);
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background: white;
+  box-shadow: var(--shadow-romantic);
+  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '❤️';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 3rem;
+  animation: rotateHeart 10s linear infinite;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+}
+
+.about-img img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--primary-pink);
+  margin-bottom: 1.5rem;
+}
+
+.about-card h3 {
+  color: var(--romantic-purple);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Kenangan Slider */
+.section-kenangan {
+  background: linear-gradient(135deg, #f8e8ff, #e8f8ff);
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: var(--shadow-romantic);
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 400px;
+}
+
+.section-card {
+  min-width: 300px;
+  padding: 2rem;
+  margin: 1rem;
+  background: white;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.section-card::after {
+  content: '✨';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  animation: twinkle 2s infinite;
+}
+
+.section-card:hover {
+  transform: scale(1.05);
+}
+
+.section-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-pink);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.slider-nav:hover {
+  background: var(--gold-heart);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-prev { left: 10px; }
+.slider-next { right: 10px; }
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-pink);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Album Section */
+.album-section {
+  background: rgba(248,233,255,0.5);
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.album-img img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  box-shadow: 0 5px 15px rgba(255,105,180,0.2);
+}
+
+.album-img img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, var(--romantic-purple), var(--primary-pink));
+  color: white;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--gold-heart);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rotateHeart {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes sparkle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+  
+  .navbar-hamburger {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .section-title h2 {
+    font-size: 2.5rem;
+  }
+  
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .slider {
+    height: 300px;
+  }
+  
+  .section-card {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 60px 1rem;
+  }
+  
+  .hero-section {
+    padding: 0 1rem;
+  }
+}
