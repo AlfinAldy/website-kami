@@ -185,8 +185,8 @@ nav {
 
 .btn-secondary {
   background: transparent;
-  color: var(--cream-bg);
-  border: 2px solid var(--cream-bg);
+  color: var(--accent-chocolate);
+  border: 2px solid var(--accent-chocolate);
 }
 
 .cta-btn:hover {
@@ -264,6 +264,7 @@ section {
 
 /* Kenangan Slider */
 .section-kenangan {
+  position: relative;
   background: linear-gradient(135deg, var(--wheat-light), var(--cream-bg));
 }
 

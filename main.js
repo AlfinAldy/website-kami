@@ -12,13 +12,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-// Static hero description
+// Looping typing effect
   const heroDesc = document.querySelector('.hero-description');
   if (heroDesc) {
-    heroDesc.textContent = 'Kisah kita dimulai dari sebuah pertemuan yang tak pernah direncanakan 2 langkah yang awalnya asing, lalu perlahan menjadi satu cerita yang tak ingin selesai...';
+    const text = 'Kisah cinta kami dimulai dari sebuah pertemuan tak terduga...';
+    let i = 0;
+    let isDeleting = false;
+    let currentText = '';
+    
+    function typeWriter() {
+      if (isDeleting) {
+        currentText = text.substring(0, currentText.length - 1);
+      } else {
+        currentText = text.substring(0, i + 1);
+      }
+      
+      heroDesc.textContent = currentText;
+      
+      if (!isDeleting && i < text.length) {
+        i++;
+        setTimeout(typeWriter, 100);
+      } else if (i === text.length) {
+        setTimeout(() => {
+          isDeleting = true;
+          setTimeout(typeWriter, 500);
+        }, 1000);
+      } else if (isDeleting && currentText.length > 0) {
+        setTimeout(typeWriter, 50);
+      } else if (isDeleting && currentText.length === 0) {
+        isDeleting = false;
+        i = 0;
+        setTimeout(typeWriter, 500);
+      }
+    }
+    
+    typeWriter();
   }
-
-  // Removed floating hearts animation
 
   // Kenangan slider
   const slider = document.querySelector('.slider');
