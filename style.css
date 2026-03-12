@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&amp;family=Great+Vibes&amp;display=swap');
 
 :root {
-  --primary-pink: #ff69b4;
-  --romantic-purple: #ba55d3;
-  --gold-heart: #ffd700;
-  --soft-white: #f8f9fa;
-  --dark-text: #2c1b3e;
-  --shadow-romantic: 0 10px 30px rgba(255,105,180,0.3);
+  --primary-brown: #8B4513;
+  --accent-chocolate: #D2691E;
+  --cream-bg: #FFFDD0;
+  --wheat-light: #F5DEB3;
+  --dark-brown: #5D4037;
+  --shadow-warm: 0 10px 30px rgba(139,69,19,0.3);
 }
 
 * {
@@ -16,13 +16,16 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  color: var(--dark-text);
+  color: var(--dark-brown);
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  background: linear-gradient(135deg, #fff1f8 0%, #e8f4f8 100%);
+  background: linear-gradient(135deg, var(--cream-bg) 0%, var(--wheat-light) 100%);
 }
 
 h1, h2, h3 { font-family: 'Great Vibes', cursive; }
@@ -49,7 +52,7 @@ nav {
 }
 
 .navbar-logo h1 {
-  color: var(--primary-pink);
+  color: var(--primary-brown);
   font-size: 2rem;
   position: relative;
 }
@@ -69,6 +72,41 @@ nav {
   gap: 2rem;
 }
 
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 1rem 0;
+    box-shadow: var(--shadow-warm);
+  }
+  
+  .navbar-menu.active {
+    display: flex;
+  }
+  
+  .navbar-menu ul {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+}
+
+.navbar-menu {
+  display: flex;
+  position: relative;
+}
+
+.navbar-menu.active {
+  display: flex;
+}
+
 .navbar-menu a {
   text-decoration: none;
   color: var(--dark-text);
@@ -78,7 +116,7 @@ nav {
 }
 
 .navbar-menu a:hover {
-  color: var(--primary-pink);
+  color: var(--accent-chocolate);
 }
 
 .navbar-menu a::after {
@@ -88,7 +126,7 @@ nav {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary-pink);
+  background: var(--accent-chocolate);
   transition: width 0.3s;
 }
 
@@ -106,8 +144,8 @@ nav {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--romantic-purple), var(--primary-pink));
-  color: white;
+  background: linear-gradient(135deg, var(--primary-brown), var(--accent-chocolate));
+  color: var(--cream-bg);
 }
 
 .hero-section::before {
@@ -163,15 +201,15 @@ nav {
 }
 
 .btn-primary {
-  background: var(--gold-heart);
-  color: var(--romantic-purple);
+  background: var(--accent-chocolate);
+  color: var(--cream-bg);
   font-weight: 600;
 }
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--cream-bg);
+  border: 2px solid var(--cream-bg);
 }
 
 .cta-btn:hover {
@@ -193,21 +231,17 @@ section {
 
 .section-title h2 {
   font-size: 3.5rem;
-  color: var(--romantic-purple);
+  color: var(--primary-brown);
   position: relative;
 }
 
 .section-title h2::after {
-  content: '💕';
-  display: block;
-  font-size: 2rem;
-  margin-top: 0.5rem;
-  animation: float 3s ease-in-out infinite;
+  content: '';
 }
 
 /* About Section */
 .about-section {
-  background: rgba(255,248,255,0.7);
+  background: rgba(245, 222, 179, 0.7);
 }
 
 .about-container {
@@ -221,20 +255,15 @@ section {
   text-align: center;
   padding: 2rem;
   border-radius: 20px;
-  background: white;
-  box-shadow: var(--shadow-romantic);
+  background: var(--cream-bg);
+  box-shadow: var(--shadow-warm);
   transition: transform 0.3s;
   position: relative;
   overflow: hidden;
 }
 
 .about-card::before {
-  content: '❤️';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  font-size: 3rem;
-  animation: rotateHeart 10s linear infinite;
+  content: '';
 }
 
 .about-card:hover {
@@ -251,14 +280,14 @@ section {
 }
 
 .about-card h3 {
-  color: var(--romantic-purple);
+  color: var(--primary-brown);
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
 /* Kenangan Slider */
 .section-kenangan {
-  background: linear-gradient(135deg, #f8e8ff, #e8f8ff);
+  background: linear-gradient(135deg, var(--wheat-light), var(--cream-bg));
 }
 
 .slider-container {
@@ -287,12 +316,7 @@ section {
 }
 
 .section-card::after {
-  content: '✨';
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  animation: twinkle 2s infinite;
+  content: '';
 }
 
 .section-card:hover {
@@ -311,8 +335,8 @@ section {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--primary-pink);
-  color: white;
+  background: var(--accent-chocolate);
+  color: var(--cream-bg);
   border: none;
   width: 50px;
   height: 50px;
@@ -324,7 +348,7 @@ section {
 }
 
 .slider-nav:hover {
-  background: var(--gold-heart);
+  background: var(--primary-brown);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -342,7 +366,7 @@ section {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--primary-pink);
+  background: var(--accent-chocolate);
   opacity: 0.5;
   cursor: pointer;
   transition: all 0.3s;
@@ -355,7 +379,7 @@ section {
 
 /* Album Section */
 .album-section {
-  background: rgba(248,233,255,0.5);
+  background: rgba(255, 253, 208, 0.5);
 }
 
 .album-grid {
@@ -409,8 +433,8 @@ section {
 
 /* Footer */
 footer {
-  background: linear-gradient(135deg, var(--romantic-purple), var(--primary-pink));
-  color: white;
+  background: linear-gradient(135deg, var(--primary-brown), var(--accent-chocolate));
+  color: var(--cream-bg);
   text-align: center;
   padding: 3rem 2rem;
 }
@@ -472,15 +496,38 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .navbar-menu {
+.navbar-menu {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow-warm);
   }
   
+  .navbar-menu.active {
+    display: flex;
+  }
+  
+  .navbar-menu ul {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+.navbar-hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .navbar-hamburger {
     display: block;
-    font-size: 1.5rem;
-    cursor: pointer;
   }
+}
   
   .section-title h2 {
     font-size: 2.5rem;
