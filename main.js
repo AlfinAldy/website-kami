@@ -1,3 +1,10 @@
+window.addEventListener('click', () => {
+    const audio = document.getElementById('myAudio');
+    if (audio.paused) {
+        audio.play();
+    }
+}, { once: true });
+
 // Interactive Romantic Features for Alfin & Eka Website
 document.addEventListener('DOMContentLoaded', function() {
   // Smooth scrolling for nav links
@@ -12,41 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-// Looping typing effect
+// One-time typing effect (stops after complete)
   const heroDesc = document.querySelector('.hero-description');
   if (heroDesc) {
     const text = 'Kisah cinta kami dimulai dari sebuah pertemuan tak terduga...';
     let i = 0;
-    let isDeleting = false;
-    let currentText = '';
     
     function typeWriter() {
-      if (isDeleting) {
-        currentText = text.substring(0, currentText.length - 1);
-      } else {
-        currentText = text.substring(0, i + 1);
-      }
-      
-      heroDesc.textContent = currentText;
-      
-      if (!isDeleting && i < text.length) {
+      if (i < text.length) {
+        heroDesc.textContent += text.charAt(i);
         i++;
         setTimeout(typeWriter, 100);
-      } else if (i === text.length) {
-        setTimeout(() => {
-          isDeleting = true;
-          setTimeout(typeWriter, 500);
-        }, 1000);
-      } else if (isDeleting && currentText.length > 0) {
-        setTimeout(typeWriter, 50);
-      } else if (isDeleting && currentText.length === 0) {
-        isDeleting = false;
-        i = 0;
-        setTimeout(typeWriter, 500);
       }
     }
     
-    typeWriter();
+    heroDesc.textContent = '';
+    setTimeout(typeWriter, 500);
   }
 
   // Kenangan slider
