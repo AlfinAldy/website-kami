@@ -1,5 +1,5 @@
 /* Romantic Love Theme for Alfin & Eka */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Great+Vibes&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200..800&amp;family=Inter:wght@300;400;500;600&amp;family=Great+Vibes&amp;display=swap');
 
 :root {
   --primary-brown: #8B4513;
@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
   line-height: 1.7;
   color: var(--dark-brown);
   overflow-x: hidden;
