@@ -12,69 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Typing effect for hero subtitle
+// Static hero description
   const heroDesc = document.querySelector('.hero-description');
   if (heroDesc) {
-    const text = '💕 Kisah cinta kami dimulai dari sebuah pertemuan tak terduga... 💕';
-    let i = 0;
-    function typeWriter() {
-      if (i < text.length) {
-        heroDesc.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-      }
-    }
-    heroDesc.textContent = '';
-    setTimeout(typeWriter, 2000);
+    heroDesc.textContent = 'Kisah kita dimulai dari sebuah pertemuan yang tak pernah direncanakan 2 langkah yang awalnya asing, lalu perlahan menjadi satu cerita yang tak ingin selesai...';
   }
 
-  // Floating hearts canvas animation
-  function createHeartsCanvas() {
-    const canvas = document.getElementById('hearts-canvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const hearts = [];
-    for (let i = 0; i < 20; i++) {
-      hearts.push({
-        x: Math.random() * canvas.width,
-        y: canvas.height + Math.random() * 100,
-        size: Math.random() * 20 + 10,
-        speed: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.5 + 0.2
-      });
-    }
-    
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      hearts.forEach(heart => {
-        ctx.save();
-        ctx.globalAlpha = heart.opacity;
-        ctx.font = `${heart.size}px Arial`;
-        ctx.fillText('❤️', heart.x, heart.y);
-        ctx.restore();
-        
-        heart.y -= heart.speed;
-        if (heart.y < 0) {
-          heart.y = canvas.height;
-          heart.x = Math.random() * canvas.width;
-        }
-        
-        heart.opacity = Math.sin(Date.now() * 0.005 + heart.x * 0.01) * 0.3 + 0.2;
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-    
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-  }
-  createHeartsCanvas();
+  // Removed floating hearts animation
 
   // Kenangan slider
   const slider = document.querySelector('.slider');

@@ -57,14 +57,7 @@ nav {
   position: relative;
 }
 
-.navbar-logo h1::after {
-  content: '❤️';
-  position: absolute;
-  font-size: 1.2rem;
-  top: -10px;
-  right: -30px;
-  animation: heartbeat 1.5s infinite;
-}
+/* Removed navbar logo heart emoji */
 
 .navbar-menu ul {
   display: flex;
@@ -143,29 +136,13 @@ nav {
   align-items: center;
   text-align: center;
   position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--primary-brown), var(--accent-chocolate));
-  color: var(--cream-bg);
+  background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 50%, #FDF2F8 100%);
+  color: #5D4037;
 }
 
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"hearts\" x=\"0\" y=\"0\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><circle cx=\"10\" cy=\"10\" r=\"1\" fill=\"rgba(255,255,255,0.1)\"/><path d=\"M10 2 Q12 0 14 2 Q16 4 14 6 Q12 8 10 6 Q8 8 6 6 Q4 4 6 2 Q8 0 10 2\" fill=\"none\" stroke=\"rgba(255,255,255,0.2)\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23hearts)\"/></svg>');
-  animation: sparkle 20s linear infinite;
-}
+/* Removed hero background heart pattern */
 
-#hearts-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 1;
-}
+/* Removed hearts-canvas */
 
 .section-title h2 {
   font-size: 4rem;
@@ -313,6 +290,13 @@ section {
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   transition: transform 0.3s;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-card {
+    min-width: 90%;
+    margin: 0.5rem 0.5rem;
+  }
 }
 
 .section-card::after {
@@ -521,11 +505,21 @@ footer {
   
 .navbar-hamburger {
   display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--primary-brown);
+  padding: 0.5rem;
 }
 
 @media (max-width: 768px) {
   .navbar-hamburger {
     display: block;
+  }
+  
+  .navbar-menu ul {
+    padding-left: 0;
   }
 }
   
