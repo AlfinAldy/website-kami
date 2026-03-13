@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // One-time typing effect (stops after complete)
   const heroDesc = document.querySelector('.hero-description');
   if (heroDesc) {
-    const text = 'Kisah cinta kami dimulai dari sebuah pertemuan tak terduga...';
+    const text = 'Kisah cinta kami dimulai dari sebuah pertemuan yang tak pernah direncanakan, dua langkah yang awalnya asing lalu perlahan menjadi satu cerita yang tak ingin selesai...';
     let i = 0;
     
     function typeWriter() {
