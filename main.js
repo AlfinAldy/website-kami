@@ -1,9 +1,12 @@
-window.addEventListener('click', () => {
-    const audio = document.getElementById('myAudio');
-    if (audio.paused) {
-        audio.play();
-    }
-}, { once: true });
+document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("myAudio");
+
+    document.body.addEventListener("click", function () {
+        audio.play().catch(() => {
+            console.log("Autoplay diblokir browser");
+        });
+    }, { once: true });
+});
 
 // Interactive Romantic Features for Alfin & Eka Website
 document.addEventListener('DOMContentLoaded', function() {
