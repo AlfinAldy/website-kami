@@ -28,7 +28,7 @@ body {
   background: linear-gradient(135deg, var(--cream-bg) 0%, var(--wheat-light) 100%);
 }
 
-h1, h2, h3 { font-family: 'Inter', cursive; }
+h1, h2, h3 { font-family: 'Bricolage Grotesque', cursive; }
 
 /* Navbar */
 .navbar {
