@@ -21,11 +21,12 @@ html {
 }
 
 body {
-  font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+  font-family: 'Bricolage Grotesque', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.7;
   color: var(--dark-brown);
   overflow-x: hidden;
   background: linear-gradient(135deg, var(--cream-bg) 0%, var(--wheat-light) 100%);
+  font-display: swap;
 }
 
 h1, h2, h3 { font-family: 'Bricolage Grotesque', cursive; }
@@ -277,8 +278,14 @@ section {
 
 .slider {
   display: flex;
-  transition: transform 0.5s ease;
+  gap: 2rem;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   height: 500px;
+}
+
+.section-card {
+  flex: 0 0 300px;
+  margin: 0;
 }
 
 .section-card {
@@ -340,6 +347,34 @@ section {
 .slider-prev { left: 10px; }
 .slider-next { right: 10px; }
 
+.day-counter {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, var(--accent-chocolate), var(--primary-brown));
+  color: var(--cream-bg);
+  padding: 1.2rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-warm);
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+  animation: heartbeat 2s infinite;
+  text-align: center;
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .day-counter {
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-width: 150px;
+  }
+}
+
 .slider-dots {
   display: flex;
   justify-content: center;
@@ -369,13 +404,13 @@ section {
 
 .album-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
 .album-img img {
   width: 100%;
-  height: 250px;
+  height: 350px;
   object-fit: cover;
   border-radius: 15px;
   cursor: pointer;
@@ -481,6 +516,14 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .day-counter {
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    min-width: 150px;
+  }
+
 .navbar-menu {
     display: none;
     position: absolute;
@@ -505,7 +548,7 @@ footer {
   }
   
 .navbar-hamburger {
-  display: none;
+  display: block;
   font-size: 1.8rem;
   cursor: pointer;
   background: none;
@@ -513,16 +556,10 @@ footer {
   color: var(--primary-brown);
   padding: 0.5rem;
 }
-
-@media (max-width: 768px) {
-  .navbar-hamburger {
-    display: block;
-  }
   
   .navbar-menu ul {
     padding-left: 0;
   }
-}
   
   .section-title h2 {
     font-size: 2.5rem;
@@ -544,6 +581,10 @@ footer {
   
 .section-card {
     min-width: 350px;
+  }
+
+  .album-img img {
+    height: 300px;
   }
 }
 

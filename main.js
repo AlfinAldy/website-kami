@@ -40,48 +40,120 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(typeWriter, 500);
   }
 
-  // Kenangan slider
+// Day counter
+  function updateDays() {
+    const startDate = new Date('2024-09-04');
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const daysEl = document.getElementById('days');
+    if (daysEl) {
+      daysEl.textContent = diffDays;
+    }
+  }
+  updateDays();
+
+  // Improved infinite kenangan slider
   const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.section-card');
+  const slides = Array.from(document.querySelectorAll('.section-card'));
   const prevBtn = document.querySelector('.slider-prev');
   const nextBtn = document.querySelector('.slider-next');
   const dotsContainer = document.querySelector('.slider-dots');
   
-  if (slider && slides.length > 0) {
-    let currentSlide = 0;
-    const slideWidth = slides[0].offsetWidth + 32; // margin included
+  if (slider && slides.length > 3) {
+    const totalSlides = slides.length;
+    const cloneCount = 3;
+    let currentIndex = cloneCount;
+    let isTransitioning = false;
+
+    // Clone slides for infinite loop
+    const firstClones = slides.slice(0, cloneCount);
+    const lastClones = slides.slice(-cloneCount);
     
-    // Create dots
+    firstClones.forEach(clone => slider.appendChild(clone.cloneNode(true)));
+    lastClones.forEach(clone => slider.insertBefore(clone.cloneNode(true), slider.firstChild));
+    
+    const allSlides = slider.querySelectorAll('.section-card');
+    const slideWidth = allSlides[0].offsetWidth + 32; // account for gap
+
+    // Create dots for original slides only
     slides.forEach((_, index) => {
       const dot = document.createElement('span');
       dot.classList.add('dot');
       if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(index));
+      dot.dataset.slide = index;
       dotsContainer.appendChild(dot);
     });
     const dots = document.querySelectorAll('.dot');
-    
-    function goToSlide(slideIndex) {
-      currentSlide = slideIndex;
-      slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      
+      // Update active dot (map to original index)
+      const originalIndex = (currentIndex - cloneCount + totalSlides) % totalSlides;
       dots.forEach(dot => dot.classList.remove('active'));
-      dots[currentSlide].classList.add('active');
+      dots[originalIndex].classList.add('active');
     }
+
+    function moveNext() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      currentIndex++;
+      slider.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      updateSlider();
+      
+      if (currentIndex >= totalSlides + cloneCount) {
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          currentIndex = cloneCount;
+          updateSlider();
+          isTransitioning = false;
+        }, 500);
+      } else {
+        setTimeout(() => { isTransitioning = false; }, 500);
+      }
+    }
+
+    function movePrev() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      
+      currentIndex--;
+      slider.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      updateSlider();
+      
+      if (currentIndex < 0) {
+        setTimeout(() => {
+          slider.style.transition = 'none';
+          currentIndex = totalSlides - 1;
+          updateSlider();
+          isTransitioning = false;
+        }, 500);
+      } else {
+        setTimeout(() => { isTransitioning = false; }, 500);
+      }
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', moveNext);
+    prevBtn.addEventListener('click', movePrev);
     
-    prevBtn.addEventListener('click', () => {
-      currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
-      goToSlide(currentSlide);
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        if (isTransitioning) return;
+        const targetIndex = index + cloneCount;
+        if (Math.abs(targetIndex - currentIndex) > 1) {
+          slider.style.transition = 'none';
+          currentIndex = targetIndex;
+          updateSlider();
+        }
+        slider.style.transition = 'transform 0.5s ease';
+      });
     });
-    
-    nextBtn.addEventListener('click', () => {
-      currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
-      goToSlide(currentSlide);
-    });
-    
+
     // Auto-play
-    setInterval(() => {
-      nextBtn.click();
-    }, 4000);
+    setInterval(moveNext, 4000);
   }
 
   // Album lightbox
