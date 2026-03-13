@@ -410,8 +410,10 @@ section {
 
 .album-img img {
   width: 100%;
-  height: 350px;
+  height: 400px;
+  aspect-ratio: 3/4;
   object-fit: cover;
+  object-position: center;
   border-radius: 15px;
   cursor: pointer;
   transition: transform 0.3s;
