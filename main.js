@@ -8,7 +8,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { once: true });
 });
 
-// Interactive Romantic Features for Alfin & Eka Website
+// FONT PRELOADING UNTUK MOBILE
+document.addEventListener('DOMContentLoaded', function() {
+  // Preload critical fonts
+  const fontPreloads = [
+    'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;400;600;800&display=swap',
+    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'
+  ];
+  
+  fontPreloads.forEach(url => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = url;
+    link.as = 'style';
+    link.crossOrigin = 'anonymous';
+    document.head.appendChild(link);
+  });
+  
+  // Rest of your existing code...
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   // Smooth scrolling for nav links
   const navLinks = document.querySelectorAll('.navbar-menu a[href^=\"#\"]');

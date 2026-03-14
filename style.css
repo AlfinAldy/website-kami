@@ -1,6 +1,30 @@
-/* Romantic Love Theme for Alfin & Eka */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200..800&amp;family=Inter:wght@300;400;500;600&amp;family=Great+Vibes&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200..800&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap') all;
 
+/* MOBILE FONT OPTIMIZATION - Letakkan di paling atas CSS */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;400;600;800&display=swap') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap') format('woff2');
+}
+
+/* Force font loading untuk mobile */
+@media (max-width: 768px) {
+  body::before {
+    content: 'ekalf';
+    font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+    font-size: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+/* Tambahkan di :root */
 :root {
   --primary-brown: #8B4513;
   --accent-chocolate: #D2691E;
@@ -21,15 +45,22 @@ html {
 }
 
 body {
-  font-family: 'Bricolage Grotesque', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Bricolage Grotesque', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.7;
   color: var(--dark-brown);
   overflow-x: hidden;
   background: linear-gradient(135deg, var(--cream-bg) 0%, var(--wheat-light) 100%);
+  /* CRITICAL: Prevent FOIT (Flash of Invisible Text) */
   font-display: swap;
+  font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3 { font-family: 'Bricolage Grotesque', cursive; }
+h1, h2, h3 { 
+  font-family: 'Bricolage Grotesque', 'Inter', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-display: swap;
+}
 
 /* Navbar */
 .navbar {
